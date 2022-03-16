@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 private enum Constants {
-//    static var apiKey = "0be77e05198d48659e0ad06074de3f87"
     static var apiKey = "c03faf132fb64ec2ad82f5665df75df7"
     static var baseUrl = "https://newsapi.org/v2/top-headlines?"
 }
@@ -71,13 +70,6 @@ class DataServiceImp: DataService {
                 return}
             do {
                 success(data)
-                
-//                if let image = UIImage(data: data) {
-//                    success(image)
-//                }
-//                else {
-//                    error(nil)
-//                }
             }
         }
         task.resume()

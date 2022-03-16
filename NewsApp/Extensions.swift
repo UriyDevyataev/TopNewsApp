@@ -34,7 +34,6 @@ extension String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-//        let date: Date? = dateFormatter.date(from: "2022-03-14T16:20:45Z")
         guard let date = dateFormatter.date(from: self) else {return Date.now}
         return date
     }

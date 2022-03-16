@@ -28,17 +28,22 @@ class NewsCollectionViewCell: UICollectionViewCell {
         config()
     }
     
-    func createGradient() {
-        let gradientLayer = CAGradientLayer()
-        imageNews.layer.sublayers?.removeAll()
-        gradientLayer.frame = self.bounds
-        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        imageNews.layer.insertSublayer(gradientLayer, at: 0)
-    }
     override func layoutSubviews() {
         super.layoutSubviews()
         createGradient()
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        prepare()
+    }
+    
+    func prepare(){
+        indexPath = nil
+        imageNews.image = nil
+    }
+    
+    //MARK: - Funcs Configurations
     
     func config() {
         configContentView()
@@ -59,18 +64,11 @@ class NewsCollectionViewCell: UICollectionViewCell {
         textNews.textColor = .white
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        prepare()
-    }
-    
-    func prepare(){
-        indexPath = nil
-        imageNews.image = nil
-    }
-    
-    override func select(_ sender: Any?) {
-        print("select")
-        cellTap?()
+    func createGradient() {
+        let gradientLayer = CAGradientLayer()
+        imageNews.layer.sublayers?.removeAll()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        imageNews.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

@@ -10,9 +10,7 @@ import UIKit
 class CategoryTableViewCell: UITableViewCell {
     
     static let identifier = "CategoryTableViewCell"
-    
-//    var indexPath: IndexPath?
-    
+        
     static func nib() -> UINib {
         return UINib(nibName: "CategoryTableViewCell",
                      bundle: nil)
@@ -25,13 +23,8 @@ class CategoryTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        prepare()
     }
     
-    func prepare() {
-//        indexPath = nil
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

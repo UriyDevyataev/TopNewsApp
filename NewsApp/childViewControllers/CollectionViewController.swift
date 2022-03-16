@@ -13,8 +13,6 @@ class CollectionViewController: UIViewController {
     let connectedService = ConnectImp()
     let dataService = DataServiceImp()
     let cachService = CashNewsImp.shared
-//    let imageCache = CashImage.imageCache
-//    let newsCache = CashImage.newsCache
     let newsStorage  = NewsDataBaseImp()
     
     private var collectionView : UICollectionView?
@@ -22,23 +20,22 @@ class CollectionViewController: UIViewController {
     var news = [News]()
     var category: String? = nil
     var imageArray = [UIImage]()
-            
+          
+    //MARK: - App Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         config()
         getDate()
     }
     
+    //MARK: - Funcs Configuration
+    
     private func config(){
         view.backgroundColor = .clear
-//        configCash()
         configCollectionView()
     }
-    
-//    func configCash() {
-//        imageCache.countLimit = 100
-//    }
-    
+
     private func configCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -60,6 +57,8 @@ class CollectionViewController: UIViewController {
         }
         self.collectionView = collectionView
     }
+    
+    //MARK: - Funcs Logic
         
     func getDate() {
         
@@ -156,6 +155,8 @@ class CollectionViewController: UIViewController {
     }
 }
 
+//MARK: - Extension UICollectionViewDataSource, UICollectionViewDelegate
+
 extension CollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -181,6 +182,8 @@ extension CollectionViewController: UICollectionViewDataSource, UICollectionView
         self.present(controller, animated: true)
     }
 }
+
+//MARK: - Extension UICollectionViewDelegateFlowLayout
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout{
 

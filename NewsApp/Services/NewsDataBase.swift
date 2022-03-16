@@ -21,8 +21,7 @@ final class NewsDataBaseImp: NewsDataBase  {
         var news = [News]()
         guard let realm = try? Realm() else {return news}
                 
-//        let predicate = NSPredicate(format: "category = \(category)")
-        let objects = realm.objects(NewsObject.self)//.filter(predicate)
+        let objects = realm.objects(NewsObject.self)
         
         let categoryObjects = objects.where{
             $0.category == category
@@ -95,7 +94,7 @@ final class NewsDataBaseImp: NewsDataBase  {
         
         guard let realm = try? Realm() else {return}
 
-        let objects = realm.objects(NewsObject.self)//.filter(predicate)
+        let objects = realm.objects(NewsObject.self)
         let categoryObjects = objects.where{
             $0.category == category
         }

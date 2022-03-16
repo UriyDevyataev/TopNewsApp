@@ -9,24 +9,22 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
-    
     var categories = ["technology", "sports", "science", "health", "general", "entertainment", "business"]
 
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: - App Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         config()
     }
     
+    //MARK: - Funcs Configuration
+    
     func config() {
         configTableView()
         sortArray()
-    }
-    
-    func sortArray() {
-        categories = categories.sorted{$0 < $1}
     }
     
     func configTableView() {
@@ -41,12 +39,10 @@ class ViewController: UIViewController {
                            forCellReuseIdentifier: CategoryTableViewCell.identifier)
     }
     
-    func fill(cell: CategoryTableViewCell, indexPath: IndexPath) -> CategoryTableViewCell {
-        
-        let controller = CollectionViewController()
-        controller.category = categories[indexPath.section]
-        addChildViewController(container: cell.contentView, controller: controller)
-        return cell
+    //MARK: - Funcs Logic
+    
+    func sortArray() {
+        categories = categories.sorted{$0 < $1}
     }
     
     func addChildViewController(container: UIView, controller: UIViewController) {
@@ -64,7 +60,17 @@ class ViewController: UIViewController {
         }
         controller.didMove(toParent: self)
     }
+    
+    func fill(cell: CategoryTableViewCell, indexPath: IndexPath) -> CategoryTableViewCell {
+        
+        let controller = CollectionViewController()
+        controller.category = categories[indexPath.section]
+        addChildViewController(container: cell.contentView, controller: controller)
+        return cell
+    }
 }
+
+//MARK: - Extension UITableViewDataSource
 
 extension ViewController: UITableViewDataSource {
     
@@ -88,19 +94,15 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return categories[section].uppercased()
     }
-
-
-//    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-//
-//    }
 }
+
+//MARK: - Extension UITableViewDelegate
 
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.height / 3
     }
-    
 }
 
 
